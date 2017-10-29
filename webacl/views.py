@@ -1,29 +1,28 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.shortcuts import render, redirect
+from webacl.forms import LoginForm
 
 
-class LoginView(TemplateView):
-    template_name = 'webacl/login.html'
+def login(request):
+    if request.method == 'POST':
+        login_form = LoginForm(request.POST)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        if login_form.is_valid():
+            return redirect('webacl/login_success.html')
+    else:
+        login_form = LoginForm()
 
-        return context
+    context = {'login_form': login_form}
 
-
-class LoginSuccessView(TemplateView):
-    template_name = 'webacl/login_success.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        return context
+    return render(request, 'webacl/login.html', context)
 
 
-class LoginFailureView(TemplateView):
-    template_name = 'webacl/login_failure.html'
+def login_success(request):
+    context = {}
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    return render(request, 'webacl/login_success.html', context)
 
-        return context
+
+def login_failure(request):
+    context = {}
+
+    return render(request, 'webacl/login_failure.html', context)

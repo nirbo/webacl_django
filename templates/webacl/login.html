@@ -1,4 +1,5 @@
 {% extends 'webacl/base.html' %}
+{% load bootstrap3 %}
 
 {% block head_extra %}
     {% load static %}
@@ -8,9 +9,21 @@
 {% block title %}WebACL Login{% endblock %}
 
 {% block body %}
-    <div class="container login-page">
+    <div class="container">
         <div class="jumbotron">
-            TEST
+            <div class="container login-form">
+                <form method="POST">
+                    {% csrf_token %}
+                    {% bootstrap_form login_form %}
+
+                    {% buttons %}
+                        <button type="submit" class="btn btn-success login-button">
+                            {% bootstrap_icon "user" %}
+                            Log In
+                        </button>
+                    {% endbuttons %}
+                </form>
+            </div>
         </div>
     </div>
 {% endblock %}
