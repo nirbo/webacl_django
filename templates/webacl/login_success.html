@@ -1,0 +1,16 @@
+{% extends 'webacl/base.html' %}
+
+{% block head_extra %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login_success.css' %}">
+{% endblock %}
+
+{% block title %}WebACL Login: Success!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron login-success">
+            Access Granted!
+        </div>
+    </div>
+{% endblock %}

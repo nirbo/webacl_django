@@ -1,0 +1,16 @@
+{% extends 'webacl/base.html' %}
+
+{% block head_extra %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login_failure.css' %}">
+{% endblock %}
+
+{% block title %}WebACL Login: Failure!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron login-failure">
+            Access Denied!
+        </div>
+    </div>
+{% endblock %}

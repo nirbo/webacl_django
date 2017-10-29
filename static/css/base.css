@@ -1,0 +1,20 @@
+.center-page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.jumbotron {
+    background-color: #222631;
+    color: lightgray;
+}
+
+body {
+    background-color: #2A3143;
+    font-family: Roboto, sans-serif;
+}
+
+label {
+    color: lightgray;
+}

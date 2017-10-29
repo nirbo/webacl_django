@@ -4,5 +4,7 @@ from webacl import views
 app_name = 'webacl'
 
 urlpatterns = [
-    url(r'^$', views.index, name='index')
+    url(r'^login/$', views.LoginView.as_view()),
+    url(r'^login/success/$', views.LoginSuccessView.as_view()),
+    url(r'^login/failure/$', views.LoginFailureView.as_view()),
 ]
