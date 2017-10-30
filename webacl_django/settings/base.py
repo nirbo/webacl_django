@@ -2,17 +2,17 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-APP_DIR = os.path.join(BASE_DIR, 'webacl')
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
+APP_DIR = os.path.join(BASE_DIR, '../../webacl')
+STATIC_DIR = os.path.join(BASE_DIR, '../../static')
 STATIC_CSS_DIR = os.path.join(STATIC_DIR, 'css')
-TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+TEMPLATE_DIR = os.path.join(BASE_DIR, '../../templates')
 WEBACL_TEMPLATES_DIR = os.path.join(TEMPLATE_DIR, 'webacl')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '42c6!-_xyxl^tj@)jwde4ld+ukb11(gts803=kxw^%jpv@x@fb'
+SECRET_KEY = SALT = '42c6!-_xyxl^tj@)jwde4ld+ukb11(gts803=kxw^%jpv@x@fb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -48,7 +48,7 @@ ROOT_URLCONF = 'webacl_django.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': [os.path.join(BASE_DIR, '../../templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -63,17 +63,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'webacl_django.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 
 # Password validation
@@ -102,9 +91,9 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
+USE_I18N = False
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 

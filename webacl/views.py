@@ -5,6 +5,7 @@ import hashlib
 import datetime
 import uuid
 
+from django.conf import settings
 
 def register(request, token):
     generate_token(request, get_client_ip(request))
@@ -45,10 +46,10 @@ def authenticate_node(form_request_ip, form_username, form_password):
 
         if node.username == form_username and node.password == form_password and node.remote_ip == form_request_ip:
             # TODO: Add firewall rule for node
-            return redirect('/webacl/login/success/')
+            return redirect('login_success')
 
     else:
-        return redirect('/webacl/login/failure/')
+        return redirect('login_failure')
 
 
 def get_client_ip(request):
@@ -57,7 +58,7 @@ def get_client_ip(request):
 
 def generate_token(request, remote_ip):
     current_timestamp = str(datetime.datetime.utcnow().strftime("%Y-%m-%d_%H:%M"))
-    salt = "askljfgkljfg89&(*&ADFIHDFJHdfjkhdksjfh"
+    salt = settings.SALT
     hash = hashlib.sha256("{}|{}|{}".format(current_timestamp, str(remote_ip), salt)
                           .encode("UTF-8")).hexdigest()
 
