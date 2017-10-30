@@ -1,5 +1,5 @@
 {% extends 'webacl/base.html' %}
-{% load bootstrap3 %}
+{% load static %}
 
 {% block head_extra %}
     {% load static %}
@@ -14,14 +14,10 @@
             <div class="container login-form">
                 <form method="POST">
                     {% csrf_token %}
-                    {% bootstrap_form login_form %}
-
-                    {% buttons %}
+                    {{ login_form }}
                         <button type="submit" class="btn btn-success login-button">
-                            {% bootstrap_icon "user" %}
                             Log In
                         </button>
-                    {% endbuttons %}
                 </form>
             </div>
         </div>

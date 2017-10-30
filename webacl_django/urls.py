@@ -4,5 +4,5 @@ from django.conf.urls import include
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^webacl/', include('webacl.urls')),
+    url(r'^', include('webacl.urls')),
 ]
