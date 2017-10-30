@@ -10,6 +10,7 @@ import uuid
 
 from django.conf import settings
 
+
 def register(request, token):
     generate_token(request, get_client_ip(request))
 

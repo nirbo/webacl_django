@@ -29,6 +29,15 @@ class Node(Timestamp):
     remote_ip = models.GenericIPAddressField(blank=False, unique=True, null=False, protocol='both')
     login_time = UnixDateTimeField(auto_now_add=True)
 
+    is_active = models.BooleanField(
+        _('active'),
+        default=True,
+        help_text=_(
+            'Designates whether this node should be treated as active. '
+            'Unselect this instead of deleting nodes.'
+        ),
+    )
+
     def __str__(self):
         return "Username: {} --- Password: {}".format(self.username, self.password)
 
