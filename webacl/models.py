@@ -2,7 +2,6 @@ import logging
 import uuid
 
 import unicodedata
-from django.contrib.auth.validators import UnicodeUsernameValidator, ASCIIUsernameValidator
 from django.db import models
 from django.utils.encoding import force_text
 from django_unixdatetimefield import UnixDateTimeField
@@ -15,17 +14,17 @@ logger = logging.getLogger(__name__)
 
 
 class Node(Timestamp):
-    username_validator = UnicodeUsernameValidator() if six.PY3 else ASCIIUsernameValidator()
-
-    username = models.SlugField(max_length=255,
+    """
+    Node Model with username and password stored as UUID
+    """
+    username = models.UUIDField(max_length=255,
                                 unique=True,
                                 default=uuid.uuid4,
-                                help_text=_('Required. 255 characters or fewer. Letters, digits and @/./+/-/_ only.'),
-                                validators=[username_validator],
+                                help_text=_('Required. 255 characters or fewer. UUID compatbile'),
                                 error_messages={
                                     'unique': _("A node with that username already exists."),
                                 }, )
-    password = models.CharField(max_length=255, default=uuid.uuid4)
+    password = models.UUIDField(max_length=255, default=uuid.uuid4)
     remote_ip = models.GenericIPAddressField(blank=False, unique=True, null=False, protocol='both')
     login_time = UnixDateTimeField(auto_now_add=True)
 
@@ -39,7 +38,7 @@ class Node(Timestamp):
     )
 
     def __str__(self):
-        return "Username: {} --- Password: {}".format(self.username, self.password)
+        return "Username: %s - Password: %s - IP: %s - LoginTime: %s" % (self.username, self.password, self.remote_ip, self.login_time)
 
     def clean(self):
         setattr(self, self.username, self.normalize_username(self.username))
