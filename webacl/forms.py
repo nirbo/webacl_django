@@ -12,7 +12,7 @@ def authenticate(request=None, **credentials):
     try:
         return Node.objects.get(**credentials)
     except Node.DoesNotExist:
-        raise
+        return
 
 
 class LoginForm(forms.Form):

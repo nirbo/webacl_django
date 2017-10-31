@@ -12,7 +12,7 @@ WEBACL_TEMPLATES_DIR = os.path.join(TEMPLATE_DIR, 'webacl')
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = SALT = '42c6!-_xyxl^tj@)jwde4ld+ukb11(gts803=kxw^%jpv@x@fb'
+SECRET_KEY = SALT = 'askljfgkljfg89&(*&ADFIHDFJHdfjkhdksjfh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
